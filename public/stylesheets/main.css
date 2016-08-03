@@ -1,0 +1,22 @@
+body {
+    background: #300433;
+    color: #ffffff;
+}
+
+.panel-img {
+    display: block;
+    width: 100% !important;
+    height: 120px !important;
+}
+
+.serie-title {
+    font-family: 'Oswald', sans-serif;
+}
+
+.link {
+    color: white;
+}
+
+.link:hover {
+    color: white;
+}
