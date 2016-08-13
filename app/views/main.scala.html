@@ -11,13 +11,34 @@
     <head>
         @* Here's where we render the page title `String`. *@
         <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("bootstrap/css/bootstrap.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap-theme.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
-        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+        <script type='text/javascript' src='@routes.Assets.versioned("bootstrap/js/bootstrap.js")'></script>
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     </head>
     <body>
+        @* Bootstrap Navbar *@
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <span><img alt="Brand" style="height: 40px" src="@routes.Assets.versioned("images/favicon-white.png")"></span>
+                        Cebolla Caramelizada
+                    </a>
+                </div>
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Búsqueda de series">
+                    </div>
+                </form>
+            </div>
+        </nav>
         @* And here's where we render the `Html` object containing
          * the page content. *@
-        @content
+        <div class="container-fluid">
+            @content
+        </div>
     </body>
 </html>

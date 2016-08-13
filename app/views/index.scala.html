@@ -9,12 +9,91 @@
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main("Welcome to Play") {
+@main("Cebolla Caramelizada") {
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @play20.welcome(message, style = "Scala")
+    @* "Mis series"*@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-tit">Mis Series</h3>
+        </div>
+        <div class="panel-body">
+            @* My shows info panels *@
+            <div class="panel panel-default col-md-3">
+                <a class="link" href="serie/10"><h4 class="pull-left serie-title">Game of Thrones</h4></a>
+                <img src="http://cde.cinescape.com.pe/ima/0/0/1/4/9/149798.jpg" alt="got" class="img-responsive panel-img">
+                <span class="label label-default">Temporadas: 6</span>
+                <span class="label label-default">En curso</span>
+                <span class="label label-default">Audio: Inglés</span>
+                <span class="label label-default">Sub: Español</span>
+            </div>
+
+            <div class="panel panel-default col-md-3">
+                <h4 class="pull-left serie-title">Band of Brothers</h4>
+                <h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4>
+                <img src="http://www.popoptiq.com/wp-content/uploads/2013/03/BandOfBrothers_banner.jpg" alt="got" class="img-responsive panel-img">
+                <span class="label label-default">Temporadas: 1</span>
+                <span class="label label-default">Finalizada</span>
+                <span class="label label-default">Audio: Inglés</span>
+                <span class="label label-default">Sub: Español</span>
+            </div>
+
+            <div class="panel panel-default col-md-3">
+                <h4 class="pull-left serie-title">Band of Brothers</h4>
+                <h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4>
+                <img src="http://www.popoptiq.com/wp-content/uploads/2013/03/BandOfBrothers_banner.jpg" alt="got" class="img-responsive panel-img">
+                <span class="label label-default">Temporadas: 1</span>
+                <span class="label label-default">Finalizada</span>
+                <span class="label label-default">Audio: Inglés</span>
+                <span class="label label-default">Sub: Español</span>
+            </div>
+
+            <div class="panel panel-default col-md-3">
+                <h4 class="pull-left serie-title">Band of Brothers</h4>
+                <h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4>
+                <img src="http://www.popoptiq.com/wp-content/uploads/2013/03/BandOfBrothers_banner.jpg" alt="got" class="img-responsive panel-img">
+                <span class="label label-default">Temporadas: 1</span>
+                <span class="label label-default">Finalizada</span>
+                <span class="label label-default">Audio: Inglés</span>
+                <span class="label label-default">Sub: Español</span>
+            </div>
+        </div>
+    </div>
+
+    @* "Descubre"*@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-tit">Descubre</h3>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" height="70px;" src="http://cde.laprensa.e3.pe/ima/0/0/1/2/6/126285.jpg" alt="twd">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">The Walking Dead</h4>
+            Luego de despertar de un coma en un hospital abandonado, el oficial de policía Rick
+            Grimes se da cuenta que el mundo que conocía no existe más, devastado por una epidemia
+            zombie de proporciones apocalípticas. En los alrededores, en las afueras de Atlanta,
+            un pequeño campamento lucha por sobrevivir mientras que "los muertos" los acechan a cada momento.
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" height="70px;" src="http://cde.laprensa.e3.pe/ima/0/0/1/2/6/126285.jpg" alt="twd">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">The Walking Dead</h4>
+            Luego de despertar de un coma en un hospital abandonado, el oficial de policía Rick
+            Grimes se da cuenta que el mundo que conocía no existe más, devastado por una epidemia
+            zombie de proporciones apocalípticas. En los alrededores, en las afueras de Atlanta,
+            un pequeño campamento lucha por sobrevivir mientras que "los muertos" los acechan a cada momento.
+        </div>
+    </div>
 
 }
