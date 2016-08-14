@@ -29,30 +29,34 @@ object SlickTables extends HasDatabaseConfig[JdbcProfile] {
     def state = column[String]("STATE")
     // Path a la imagen de la serie
     def image = column[String]("IMAGE")
+    // Indica si la serie fue solicitada
+    def requested = column[Boolean]("REQUESTED")
 
-    def * = (id, title, description, seasonsNumber, state, image) <> (Series.tupled, Series.unapply)
+    def * = (id, title, description, seasonsNumber, state, image, requested) <> (Series.tupled, Series.unapply)
   }
   val seriesTable : TableQuery[SeriesTable] = TableQuery[SeriesTable]
 
 
 
   class SeasonTable(tag: Tag) extends BaseTable[Season](tag, "season") {
-    // Serie a la cual pertenece la temporada
+    // Serie a la cual pertenece la season
     def seriesID = column[Long]("SERIES_ID")
-    // Numero de temporada
+    // Numero de season
     def number = column[Int]("NUMBER")
-    // Titulo de la temporada
+    // Titulo de la season
     def title =  column[String]("TITLE")
-    // Descripcion de la temporada
+    // Descripcion de la season
     def description = column[String]("DESCRIPTION")
-    // Numero de capitulos de la temporada
+    // Numero de capitulos de la season
     def epsNumber = column[Int]("NUMBER_OF_EPISODES")
-    // Estado de la temporada
+    // Estado de la season
     def state = column[String]("STATE")
-    // Path a la imagen de la temporada
+    // Path a la imagen de la season
     def image = column[String]("IMAGE")
+    // Indica si l season fue solicitada
+    def requested = column[Boolean]("REQUESTED")
 
-    def * = (id, seriesID, number, title, description, epsNumber, state, image) <> (Season.tupled, Season.unapply)
+    def * = (id, seriesID, number, title, description, epsNumber, state, image, requested) <> (Season.tupled, Season.unapply)
 
     // Foreign Key
     def series: ForeignKeyQuery[SeriesTable, Series] =

@@ -7,10 +7,16 @@ import play.api.Play
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfig}
 import slick.backend.DatabaseConfig
 import slick.driver.JdbcProfile
-import slick.lifted.{CanBeQueryCondition}
+import slick.lifted.CanBeQueryCondition
+
 import scala.concurrent.Future
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import javax.inject.{Inject, Singleton}
+
+import slick.model.Column
+
+import scala.concurrent.Await
+
 
 trait AbstractBaseDAO[T,A] {
   def insert(row : A): Future[Long]
@@ -83,15 +89,38 @@ class SeriesDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider
   def all: Future[Seq[Series]] = {
     db.run(tableQ.result)
   }
+}
 
-  def createTable: Future[Unit] = {
-    db.run(tableQ.schema.create)
+
+@Singleton
+class SeasonDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends BaseDAO[SeasonTable, Season]{
+  import dbConfig.driver.api._
+
+  protected val tableQ = SlickTables.seasonTable
+
+  def all: Future[Seq[Season]] = {
+    db.run(tableQ.result)
   }
 
-  def createTableWithDummyData: Future[Seq[Long]] = {
-    createTable.flatMap(_ =>
-    insert(Seq(
-            Series(0, "Serie1", "", 1, "", ""),
-            Series(0, "Serie2", "", 1, "", ""))))
+
+  def seasonsOfId(id: Long) : Future[Seq[Season]]  = {
+    db.run(tableQ.filter(_.seriesID === id).sortBy(_.number).result)
+  }
+}
+
+
+@Singleton
+class EpisodeDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends BaseDAO[EpisodeTable, Episode]{
+  import dbConfig.driver.api._
+
+  protected val tableQ = SlickTables.episodeTable
+
+  def all: Future[Seq[Episode]] = {
+    db.run(tableQ.result)
+  }
+
+
+  def episodesOfId(id: Long) : Future[Seq[Episode]]  = {
+    db.run(tableQ.filter(_.seasonID === id).sortBy(_.number).result)
   }
 }

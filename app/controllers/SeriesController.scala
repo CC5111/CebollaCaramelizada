@@ -19,7 +19,7 @@ class SeriesController @Inject()(seriesDAO: SeriesDAO, seasonDAO: SeasonDAO)(imp
   def show(id: Long) = Action.async { implicit request =>
     seasonDAO.seasonsOfId(id).map { seasons =>
       Await.result(seriesDAO.findById(id), Duration.Inf) match {
-        case Some(s) => Ok(views.html.serie(s, seasons))
+        case Some(s) => Ok(views.html.series(s, seasons))
         case None => Redirect(routes.HomeController.index())
       }
 
