@@ -1,0 +1,9 @@
+@import models.entities.Series
+@(name: String, series: Seq[Series])
+
+This is the @{name} data
+<ul>
+  @for( s <- series){
+    <li>ID=@s.id TITLE=@s.title</li>
+  }
+</ul>
