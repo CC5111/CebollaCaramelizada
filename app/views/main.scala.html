@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String)(content: Html)
+@(title: String, searchbar: Html = Html(""))(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,16 +23,12 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="@routes.HomeController.index()">
                         <span><img alt="Brand" style="height: 40px" src="@routes.Assets.versioned("images/favicon-white.png")"></span>
                         Cebolla Caramelizada
                     </a>
                 </div>
-                <form class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search Series">
-                    </div>
-                </form>
+                @searchbar
             </div>
         </nav>
         @* And here's where we render the `Html` object containing

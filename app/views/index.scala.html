@@ -12,7 +12,15 @@ discoverSeries deberia ser Series?
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main("Cebolla Caramelizada") {
+
+@searchbar = {
+    <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search Series">
+        </div>
+    </form>
+}
+@main("Cebolla Caramelizada", searchbar) {
 
     @* "Mis series"*@
     <div class="panel panel-default">
