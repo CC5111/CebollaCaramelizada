@@ -6,7 +6,7 @@ import java.net.URLEncoder
   * Created by matiasimc on 03-08-16.
   * Wrapper of Trakt API, methods return JSON strings
   */
-class Trakt {
+object Trakt {
   val API_KEY = "569a84a27212b725c2a99056dc9a4a18560baedf6b3dc56f7bc74457c3c0e65e"
   val API_REFRESH = "da300bba4715294e6844681fa9eb33d5961df988d71b5a31f765b30d85ad9294"
   val CLIENT_ID = "3c7eaee3a6e7066fed2e4d2b1e4e91d6dba01edd38e7f4b73aaf54a955cc9754"
@@ -52,6 +52,10 @@ class Trakt {
   }
 
   /*
+  Get the tvdb id for a given trakt
+   */
+
+  /*
   Get all seasons from a show, with images urls
    */
   def get_seasons(id: Long) : String = {
@@ -72,6 +76,8 @@ class Trakt {
       .header("trakt-api-key", CLIENT_ID).asString
     request.body
   }
+
+
 
   /*
   Get popular shows
