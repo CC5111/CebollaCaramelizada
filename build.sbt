@@ -12,11 +12,12 @@ libraryDependencies ++= Seq(
   evolutions,
   "com.h2database" % "h2" % "1.4.191",
   cache,
-  ws,
+  //ws,
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
 )
 
 libraryDependencies +=  "org.scalaj" %% "scalaj-http" % "2.3.0"
+libraryDependencies += "net.ruippeixotog" %% "scala-scraper" % "1.0.0"
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 
