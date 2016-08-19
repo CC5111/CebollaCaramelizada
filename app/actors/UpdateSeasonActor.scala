@@ -39,7 +39,7 @@ class UpdateSeasonActor @Inject() (serie: Series, season: Season, seasonDAO: Sea
             val traktId: Long = (jsEpisode \ "ids" \ "trakt").validate[Long].get
             preEpisodes.filter(episode => episode.idTrakt == traktId) match {
               case Seq() => {
-                println("Agregar " + traktId + " for " + season.title)
+                println("Agregar " + traktId + " for " + season.title+ " for " + serie.title)
                 val episodeNumber: Int = (jsEpisode \ "number").validate[Int].get
                 val a : Future[Long] = episodeDAO.insert(Episode(0, season.id, episodeNumber, (jsEpisode \ "title").validate[String].get, "", 0,"", (jsEpisode \ "images" \ "screenshot" \ "full").validate[String].getOrElse(routes.Assets.versioned("images/cebolla-echala-a-la-olla.png").toString), "", false, "", 0, traktId))//Dummy description, epNumber, state, duration, language, source
                 Await.result(a, Duration.Inf)

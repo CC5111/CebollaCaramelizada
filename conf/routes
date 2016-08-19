@@ -5,6 +5,8 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
+GET     /remove/:id                          controllers.HomeController.remove(id: Long)
+
 GET     /series/:id                  controllers.SeriesController.show(id: Long)
 
 GET     /series/:idSeries/season/:idSeason              controllers.SeasonController.show(idSeries: Long, idSeason: Long)
