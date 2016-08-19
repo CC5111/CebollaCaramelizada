@@ -16,6 +16,8 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap-theme.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
         <script type='text/javascript' src='@routes.Assets.versioned("bootstrap/js/bootstrap.js")'></script>
+        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -23,14 +25,14 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="@routes.HomeController.index()">
                         <span><img alt="Brand" style="height: 40px" src="@routes.Assets.versioned("images/favicon-white.png")"></span>
                         Cebolla Caramelizada
                     </a>
                 </div>
-                <form class="navbar-form navbar-right" role="search">
+                <form class="navbar-form navbar-right" role="search" action="@routes.ListController.show()">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search Series">
+                        <input type="text" class="form-control" name="serieName" placeholder="Search Shows" >
                     </div>
                 </form>
             </div>
