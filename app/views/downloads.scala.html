@@ -1,0 +1,33 @@
+@()
+
+@main("Downloads") {
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-tit">Download Manager</h3>
+        </div>
+        <div class="panel-body">
+            <table id="dtable" class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Size</th>
+                    <th>Completed</th>
+                </tr>
+            </table>
+        </div>
+        <script >
+            var ws = new WebSocket("ws://localhost:9000/downloads/socket");
+            ws.onmessage = function(e){
+                var m = JSON.parse(e.data);
+                console.log(m[0].completed);
+                $('.eraseMe').remove();
+                for (d in m) {
+                    var fl = Math.floor(parseFloat(m[d].completed));
+                    $('#dtable').append('<tr class="eraseMe"><td>'+m[d].name+'</td><td>'+m[d].size+'</td><td>'+'<div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="'+fl+'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width:' +fl+'%;">'+fl+'%</div> </div>'+'</td></tr>')
+                }
+            }
+            setInterval(function(){
+                ws.send("golato");
+            },2000);
+        </script>
+    </div>
+}

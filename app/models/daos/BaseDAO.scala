@@ -109,6 +109,13 @@ class SeriesDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider
     db.run(tableQ.filter(_.idTrakt.inSet(id)).delete)
   }
 
+  def uncheckRequested(id: Long) = {
+    db.run(tableQ.filter(_.id === id).map{x => (x.requested)}.update(false))
+  }
+
+  def checkRequested(id: Long) = {
+    db.run(tableQ.filter(_.id === id).map{x => (x.requested)}.update(true))
+  }
 }
 
 
@@ -131,6 +138,14 @@ class SeasonDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider
   def seasonsOfId(id: Long): Future[Seq[Season]] = {
     db.run(tableQ.filter(_.seriesID === id).sortBy(_.number).result)
   }
+
+  def uncheckRequested(id: Long) = {
+    db.run(tableQ.filter(_.id === id).map{x => (x.requested)}.update(false))
+  }
+
+  def checkRequested(id: Long) = {
+    db.run(tableQ.filter(_.id === id).map{x => (x.requested)}.update(true))
+  }
 }
 
 
@@ -152,5 +167,13 @@ class EpisodeDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvide
 
   def findByTrackId(idTrakt: Long) = {
     db.run(tableQ.filter(_.idTrakt === idTrakt).result.headOption)
+  }
+
+  def uncheckRequested(id: Long) = {
+    db.run(tableQ.filter(_.id === id).map{x => (x.requested)}.update(false))
+  }
+
+  def checkRequested(id: Long) = {
+    db.run(tableQ.filter(_.id === id).map{x => (x.requested)}.update(true))
   }
 }
