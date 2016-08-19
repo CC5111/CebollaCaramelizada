@@ -7,7 +7,7 @@ import java.net.URLEncoder
 import controllers.routes
 import play.api.libs.json._
 
-case class SearchedSeries(title: String, description: String, image: String, status: String)
+case class SearchedSeries(title: String, description: String, image: String, status: String, traktId: Long)
 
 /**
   * Created by matiasimc on 03-08-16.
@@ -38,27 +38,27 @@ object Trakt {
     request.body
   }
 
-
+  /* Get a sequence of SearchedSeries*/
   def seqShow(query: String): Seq[SearchedSeries] = {
     val array = Json.parse(search_show(query))
     array match {
       case JsArray(elements) => elements.map {
         element => {
           val id = (element \ "show" \ "ids" \ "trakt").validate[Long].get
-          val info = Json.parse(get_show_info(id))
-          val images = Json.parse(get_show_images(id))
+          val info = Json.parse(show_info(id))
+          val images = Json.parse(show_images(id))
           val title = (info \ "title").validate[String].get
           val description = (info \ "overview").validate[String].getOrElse("Not found")
           val status = (info \ "status").validate[String].getOrElse("Not found")
           val image = (images \ "images" \ "fanart" \ "thumb").validate[String].getOrElse(routes.Assets.versioned("images/cebolla-echala-a-la-olla.png").toString)
-          SearchedSeries(title, description, image, status)
+          SearchedSeries(title, description, image, status, id)
         }
       }
     }
   }
 
   /* Get a single show given a trakt id, with description and more info */
-  def get_show_info(id: Long): String = {
+  def show_info(id: Long): String = {
     val request = Http(API_URL + "shows/" + id + "?extended=full")
       .header("Content-Type", "application/json")
       .header("trakt-api-version", "2")
@@ -67,7 +67,7 @@ object Trakt {
   }
 
   /* Get a single show given a trakt id, with images urls */
-  def get_show_images(id: Long): String = {
+  def show_images(id: Long): String = {
     val request = Http(API_URL + "shows/" + id + "?extended=images")
       .header("Content-Type", "application/json")
       .header("trakt-api-version", "2")
@@ -86,6 +86,13 @@ object Trakt {
     request.body
   }
 
+  def getAllEpisodes(show_id: Long) = {
+    val request = Http(API_URL + "shows/" + show_id + "/seasons?extended=episodes")
+      .header("Content-Type", "application/json")
+      .header("trakt-api-version", "2")
+      .header("trakt-api-key", CLIENT_ID).asString
+    request.body
+  }
   /*
   Get the tvdb id for a given trakt
    */

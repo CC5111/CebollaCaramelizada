@@ -5,7 +5,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-tit">Add Shows</h3>
+            <h3 class="panel-tit">Add Series</h3>
         </div>
     </div>
     @for(s <- series) {
@@ -14,7 +14,7 @@
                 <img class="media-object" height="70px;" src="@s.image" alt="twd">
             </div>
             <div class="media-body">
-                <h4 class="media-heading">@s.title <small>@s.status</small></h4>
+                <h4 class="media-heading">@s.title <small>@s.status </small> <button style="margin-left: 5px" type="button" onclick="www.google.cl" class="btn btn-success">Add</button></h4>
                 @s.description
             </div>
         </div>
