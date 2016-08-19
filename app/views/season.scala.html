@@ -1,33 +1,34 @@
 @import models.entities.Season
 @import models.entities.Series
 @import models.entities.Episode
-@(series: Series, season: Season, episodes: Seq[Episode])
+@(series: Series, season: Season, episodes: Seq[Episode], idSeries: Long, idSeason: Long)
 
-@main(series.title+" · "+ season.title+"· Cebolla Caramelizada") {
-    <h2 class="serie-title">@(series.title+", "+ season.title)</h2>
+@main(series.title + " · " + season.title + "· Cebolla Caramelizada") {
+    <h2 class="serie-title">@(series.title + ", " + season.title)</h2>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-tit">Episodes</h3>
         </div>
         <div class="panel-body">
-            @for(e <- episodes) {
-                <div class="panel panel-default col-md-4">
-                    <h4 class="pull-left serie-title">Episode @e.number: "@e.title"</h4>
-                    @if(e.requested){
-                        <h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4>
-                    } else {
-                        <h4 class="pull-right"><span class="glyphicon glyphicon-unchecked"></span></h4>
-                    }
-                    <img src="@e.image" alt="got" class="img-responsive panel-img">
-                    <span class="label label-default">Duration: @((e.duration/60).toInt) min</span>
-                    <span class="label label-default">@e.state</span>
-                    <div class="progress" style="margin-top: 15px;">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="@e.progress.toInt" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: @e.progress.toInt%;">
+        @for(e <- episodes) {
+            <div class="panel panel-default col-md-4">
+                <h4 class="pull-left serie-title">Episode @e.number: "@e.title"</h4>
+                @if(e.requested) {
+                    <a href="@routes.SeasonController.uncheck(e.id, idSeries, idSeason)"><h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4></a>
+                } else {
+                    <a href="@routes.SeasonController.check(e.id, idSeries, idSeason)"> <h4 class="label label-default pull-right"><span class="glyphicon glyphicon-unchecked"></span></h4></a>
+                }
+                <img src="@e.image" alt="got" class="img-responsive panel-img">
+                <span class="label label-default">Duration: @((e.duration / 60).toInt) min</span>
+                <span class="label label-default">@e.state</span>
+                <div class="progress" style="margin-top: 15px;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="@e.progress.toInt" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;
+                        width: @e.progress.toInt%;">
                         @e.progress.toInt %
-                        </div>
                     </div>
                 </div>
-            }
+            </div>
+        }
 
         </div>
     </div>

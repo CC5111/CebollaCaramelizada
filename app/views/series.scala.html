@@ -1,7 +1,7 @@
 @* TODO This should take a Serie object *@
 @import models.entities.Season
 @import models.entities.Series
-@(series: Series, seasons: Seq[Season])
+@(series: Series, seasons: Seq[Season], serieId:Long)
 
 @main(series.title+" · Cebolla Caramelizada") {
     <h2 class="serie-title">@series.title</h2>
@@ -14,9 +14,9 @@
                 <div class="panel panel-default col-md-3">
                     <a href="/series/@series.id/season/@s.id" class="link"><h4 class="pull-left serie-title">Season @s.number</h4></a>
                     @if(s.requested){
-                        <h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4>
-                    } else {
-                        <h4 class="pull-right"><span class="glyphicon glyphicon-unchecked"></span></h4>
+                        <a href="@routes.SeriesController.uncheck(s.id,serieId)"><h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4></a>
+                            } else {
+                        <a href="@routes.SeriesController.check(s.id,serieId)"> <h4 class="label label-default pull-right"><span class="glyphicon glyphicon-unchecked"></span></h4></a>
                     }
                     <img src="@s.image" alt="got" class="img-responsive panel-img">
                     <span class="label label-default">Episodes: @s.epsNumber</span>

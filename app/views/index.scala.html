@@ -18,9 +18,9 @@
                 <div class="panel panel-default col-md-4">
                     <a class="link" href="series/@s.id"><h4 class="pull-left serie-title">@s.title</h4></a>
                     @if(s.requested){
-                        <h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4>
+                        <a href="@routes.HomeController.uncheck(s.id)"><h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4>>
                     } else {
-                        <h4 class="label label-default pull-right"><span class="glyphicon glyphicon-unchecked"></span></h4>
+                        <a href="@routes.HomeController.check(s.id)"> <h4 class="label label-default pull-right"><span class="glyphicon glyphicon-unchecked"></span></h4></a>
                     }
                     <a href="@routes.HomeController.remove(s.idTrakt)"><h4 class="label label-danger pull-right"><span class="glyphicon glyphicon-remove"></span></h4></a>
                     <img src="@s.image" alt="got" class="img-responsive panel-img">
@@ -31,7 +31,6 @@
 
         </div>
     </div>
-
     @* "Descubre"*@
     <div class="panel panel-default">
         <div class="panel-heading">

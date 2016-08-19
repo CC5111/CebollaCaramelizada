@@ -18,7 +18,7 @@ import play.api.libs.json._
 import akka.pattern.ask
 import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future}
-import scala.collection.TraversableOnce._
+
 @Singleton
 class ListController @Inject()(seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, episodeDAO: EpisodeDAO)(implicit ec: ExecutionContext, system: ActorSystem) extends Controller {
   val updaterActor = system.actorOf(UpdaterActor.props(seriesDAO, seasonDAO, episodeDAO), "UpdaterList")
