@@ -21,9 +21,8 @@ import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.collection.TraversableOnce._
 @Singleton
 class ListController @Inject()(seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, episodeDAO: EpisodeDAO)(implicit ec: ExecutionContext, system: ActorSystem) extends Controller {
-  val updaterActor = system.actorOf(UpdaterActor.props(seriesDAO, seasonDAO, episodeDAO), "UpdaterList")
-  implicit val timeout = Timeout(2 minutes)
-
+  //val updaterActor = system.actorOf(UpdaterActor.props(seriesDAO, seasonDAO, episodeDAO), "UpdaterList")
+  //implicit val timeout = Timeout(2 minutes)
   def show() = Action {
     implicit request => {
       GET(request, "serieName") match {
@@ -55,8 +54,8 @@ class ListController @Inject()(seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, episo
         case Some(serie) => (Ok("Already in library"))
         case None => {
           seriesDAO.insert(Series(0, title, description, seasonsNumber, status, image, requested, id))
-          val resp = updaterActor ? Update
-          val msg = Await.result(resp, timeout.duration).asInstanceOf[String]
+    //      val resp = updaterActor ? Update
+    //      val msg = Await.result(resp, timeout.duration).asInstanceOf[String]
           (Ok("Added to library"))
         }
       }
@@ -67,4 +66,6 @@ class ListController @Inject()(seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, episo
   def json(id: Long) = Action {
     Ok(Json.prettyPrint(Json.parse(Trakt.getAllEpisodes(id))))
   }
+
+
 }
