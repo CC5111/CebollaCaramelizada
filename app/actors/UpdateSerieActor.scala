@@ -1,17 +1,21 @@
 package actors
 
-import akka.actor.{Actor, ActorSystem, Props}
+import java.util.concurrent.TimeUnit
+
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.actor.Actor.Receive
 import models.daos.{EpisodeDAO, SeasonDAO, SeriesDAO}
 import javax.inject.{Inject, Singleton}
 
+import akka.util.Timeout
 import controllers.routes
 import models.entities.{Season, Series}
 import play.api.libs.json.{JsArray, JsValue, Json}
 import trakt.Trakt
 
-import scala.concurrent.duration.Duration
+import scala.concurrent.duration.{Duration, FiniteDuration}
 import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.util.{Failure, Success}
 
 /**
   * Created by sking32 on 19/08/16.
@@ -26,6 +30,8 @@ object UpdateSerieActor {
 
 class UpdateSerieActor @Inject() (serie: Series,seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, episodeDAO: EpisodeDAO)
                              (implicit system: ActorSystem, ec: ExecutionContext)extends Actor{
+
+
   def receive: Receive = {
     case Update => {
       println("Actor for " + serie.title)
@@ -58,7 +64,13 @@ class UpdateSerieActor @Inject() (serie: Series,seriesDAO: SeriesDAO, seasonDAO:
 
       val seasonActor =  seasons.map(
         season => {
-          system.actorOf(UpdateSeasonActor.props(serie, season, seasonDAO, episodeDAO), "Updater-season-"+season.id)
+          implicit val timeout = Timeout(FiniteDuration(1, TimeUnit.SECONDS))
+          Await.result(context.actorSelection("/user/*/*/"+"Updater-season-" + season.id)
+            .resolveOne()
+            .recover { case _:Exception =>
+              context.actorOf(UpdateSeasonActor.props(serie, season, seasonDAO, episodeDAO), "Updater-season-" + season.id)
+            } ,Duration.Inf)
+
         }
       )
       for (actor <- seasonActor) actor ! Update //async call
