@@ -36,7 +36,7 @@ public class PeersManager {
      * Creates a new instance of PeersManager
      */
     private int connectionCreationTreshold = 35;
-    private int maxConnection = 45;
+    private int maxConnection = 20;
     private Torrent torrent;
     private long disconnectedClientDownloaded = 0l;
     private long disconnectedClientUploaded = 0l;

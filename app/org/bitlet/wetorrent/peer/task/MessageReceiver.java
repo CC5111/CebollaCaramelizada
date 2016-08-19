@@ -147,11 +147,6 @@ public class MessageReceiver implements ThreadTask {
             setLastReceivedMessageMillis(System.currentTimeMillis());
 
         } catch (Exception e) {
-            if (Torrent.verbose) {
-                peer.getPeersManager().getTorrent().addEvent(new Event(peer, "Problem waiting for new message", Level.WARNING));
-            }
-            e.printStackTrace(System.err);
-            throw e;
         }
         return true;
     }
