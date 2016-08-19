@@ -14,8 +14,6 @@ import scala.concurrent.ExecutionContext
 class DownloadsController @Inject() (implicit ec: ExecutionContext, system: ActorSystem, mat: akka.stream.Materializer) extends Controller {
 
   def show = Action {
-    TorrentClient.add_torrent(KickassAPI.download_torrent_file("game of thrones", 6, 5), "torrents")
-    TorrentClient.add_torrent(KickassAPI.download_torrent_file("game of thrones", 6, 6), "torrents")
     Ok(views.html.downloads())
   }
 
