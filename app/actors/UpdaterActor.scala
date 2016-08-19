@@ -26,12 +26,15 @@ class UpdaterActor @Inject() (seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, episod
                              (implicit system: ActorSystem, ec: ExecutionContext)extends Actor{
   def receive: Receive = {
     case Update => {
-      // CALL TRAKT HERE
+      // CALL TRAKT HERE (new series?)
+      println("Updater Actor")
       val series: Seq[Series] = Await.result(seriesDAO.all, Duration.Inf)
-      for (serie <- series){
-        println("Creting actor for " + serie.title)
-
-      }
+      val seriesActor =  Await.result(seriesDAO.all, Duration.Inf).map(
+        serie => {
+          system.actorOf(UpdateSerieActor.props(serie, seriesDAO, seasonDAO, episodeDAO), "Updater-serie-"+serie.id)
+        }
+      )
+      for (actor <- seriesActor) actor ! Update //async call
 
       sender ! self.path.toString
     }
