@@ -25,10 +25,9 @@ class ListController @Inject()(seriesDAO: SeriesDAO, seasonDAO: SeasonDAO)(impli
     }
   }
 
-  def add(id: Long) = Action {
-    Ok("id")
+  def add(id: Long) =  Action {
+    Ok("")
   }
-
   def json(id: Long) = Action {
     Ok(Json.prettyPrint(Json.parse(Trakt.getAllEpisodes(id))))
   }
