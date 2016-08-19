@@ -12,7 +12,7 @@ insert into "series" ("TITLE","DESCRIPTION","NUMBER_OF_SEASONS","STATE","IMAGE",
 'In progress',
 'http://cde.cinescape.com.pe/ima/0/0/1/4/9/149798.jpg',
 true,
-1);
+1390);
 
 insert into "series" ("TITLE","DESCRIPTION","NUMBER_OF_SEASONS","STATE","IMAGE","REQUESTED","ID_TRAKT")  values ('Band Of Brothers',
 'The miniseries follows Easy Company, an army unit during World War II, from their initial training at Camp Toccoa to the conclusion of the war. The series is based on the book written by the late Stephen E. Ambrose. Band of Brothers is executive produced by Steven Spielberg and Tom Hanks, the series won 6 Emmy Awards.',
@@ -20,7 +20,7 @@ insert into "series" ("TITLE","DESCRIPTION","NUMBER_OF_SEASONS","STATE","IMAGE",
 'Finished',
 'http://www.popoptiq.com/wp-content/uploads/2013/03/BandOfBrothers_banner.jpg',
 true,
-1);
+32229);
 
 insert into "series" ("TITLE","DESCRIPTION","NUMBER_OF_SEASONS","STATE","IMAGE","REQUESTED","ID_TRAKT")  values
 ('The Big Bang Theory','What happens when hyperintelligent roommates Sheldon and Leonard meet Penny, a free-spirited beauty moving in next door, and realize they know next to nothing about life outside of the lab. Rounding out the crew are the smarmy Wolowitz, who thinks he''s as sexy as he is brainy, and Koothrappali, who suffers from an inability to speak in the presence of a woman.',
@@ -28,7 +28,7 @@ insert into "series" ("TITLE","DESCRIPTION","NUMBER_OF_SEASONS","STATE","IMAGE",
  'In progress',
  'https://walter.trakt.us/images/shows/000/001/409/posters/thumb/8adfe77938.jpg',
  false,
-1);
+1409);
 
 insert into "series" ("TITLE","DESCRIPTION","NUMBER_OF_SEASONS","STATE","IMAGE","REQUESTED","ID_TRAKT")  values
 ('Mr. Robot',
@@ -37,174 +37,174 @@ insert into "series" ("TITLE","DESCRIPTION","NUMBER_OF_SEASONS","STATE","IMAGE",
 'In progress',
 'https://walter.trakt.us/images/shows/000/093/720/posters/thumb/e90844dd99.jpg',
 true,
-1);
+93720);
+
+
+-- insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
+-- (1,
+-- 1,
+-- 'Season 1 2011',
+-- 'Trouble is brewing in the Seven Kingdoms of Westeros. For the driven inhabitants of this visionary world, control of Westeros'' Iron Throne holds the lure of great power. But in a land where the seasons can last a lifetime, winter is coming...and beyond the Great Wall that protects them, an ancient evil has returned. In Season One, the story centers on three primary areas: the Stark and the Lannister families, whose designs on controlling the throne threaten a tenuous peace, the dragon princess Daenerys, heir to the former dynasty, who waits just over the Narrow Sea with her malevolent brother Viserys, and the Great Wall--a massive barrier of ice where a forgotten danger is stirring.',
+-- 10,
+-- 'Finished',
+-- 'https://walter.trakt.us/images/seasons/000/003/963/posters/thumb/1834978783.jpg',
+-- true,
+-- 3962);
+--
+-- insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
+-- (1,
+-- 2,
+-- 'Season 2 2012',
+-- 'The cold winds of winter are rising in Westeros...war is coming...and five kings continue their savage quest for control of the all-powerful Iron Throne. With winter fast approaching, the coveted Iron Throne is occupied by the cruel Joffrey, counseled by his conniving mother Cersei and uncle Tyrion. But the Lannister hold on the Throne is under assault on many fronts. Meanwhile, a new leader is rising among the wildings outside the Great Wall, adding new perils for Jon Snow and the order of the Night''s Watch.',
+-- 10,
+-- 'Finished',
+-- 'https://walter.trakt.us/images/seasons/000/003/964/posters/thumb/718943d94f.jpg',
+-- true,
+-- 3963);
+--
+--
+--
+--
+-- insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
+-- (2,
+-- 1,
+-- 'Season 1 2001',
+-- 'The miniseries follows Easy Company, an army unit during World War II, from their initial training at Camp Toccoa to the conclusion of the war. The series is based on the book written by the late Stephen E. Ambrose. Band of Brothers is executive produced by Steven Spielberg and Tom Hanks, the series won 6 Emmy Awards.',
+--  10,
+--  'Finished',
+--  'https://walter.trakt.us/images/seasons/000/014/538/posters/thumb/bead1bcce6.jpg',
+--  true,
+-- 1);
+--
+-- insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
+-- (3,
+-- 1,
+-- 'Season 1 2007 - 2008',
+-- 'What happens when hyperintelligent roommates Sheldon and Leonard meet Penny, a free-spirited beauty moving in next door, and realize they know next to nothing about life outside of the lab. Rounding out the crew are the smarmy Wolowitz, who thinks he''s as sexy as he is brainy, and Koothrappali, who suffers from an inability to speak in the presence of a woman.',
+--  17,
+--  'Finished',
+--  'https://walter.trakt.us/images/seasons/000/004/080/posters/thumb/585ca19731.jpg',
+--  true,
+-- 1);
+--
+-- insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
+-- (3,
+-- 2,
+-- 'Season 2 2008 - 2009',
+-- 'What happens when hyperintelligent roommates Sheldon and Leonard meet Penny, a free-spirited beauty moving in next door, and realize they know next to nothing about life outside of the lab. Rounding out the crew are the smarmy Wolowitz, who thinks he''s as sexy as he is brainy, and Koothrappali, who suffers from an inability to speak in the presence of a woman.',
+--  23,
+--  'Finished',
+--  'https://walter.trakt.us/images/seasons/000/004/081/posters/thumb/e0f1eb86fe.jpg',
+--  false,
+-- 1);
+--
+-- insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
+-- (4,
+-- 1,
+-- 'Season 1 2015',
+-- 'Elliot finds himself at a crossroad when the mysterious leader of an underground hacker group recruits him to destroy the firm he is paid to protect. Compelled by his personal beliefs, Elliot struggles to resist the chance to take down the multinational CEOs he believes are running (and ruining) the world.',
+--  10,
+--  'Finished',
+--  'https://walter.trakt.us/images/seasons/000/107/991/posters/thumb/84b33d1db7.jpg',
+--  true,
+-- 1);
 
 
 
-
-
-insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
-(1,
-1,
-'Season 1 2011',
-'Trouble is brewing in the Seven Kingdoms of Westeros. For the driven inhabitants of this visionary world, control of Westeros'' Iron Throne holds the lure of great power. But in a land where the seasons can last a lifetime, winter is coming...and beyond the Great Wall that protects them, an ancient evil has returned. In Season One, the story centers on three primary areas: the Stark and the Lannister families, whose designs on controlling the throne threaten a tenuous peace, the dragon princess Daenerys, heir to the former dynasty, who waits just over the Narrow Sea with her malevolent brother Viserys, and the Great Wall--a massive barrier of ice where a forgotten danger is stirring.',
-10,
-'Finished',
-'https://walter.trakt.us/images/seasons/000/003/963/posters/thumb/1834978783.jpg',
-true,
-1);
-
-insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
-(1,
-2,
-'Season 2 2012',
-'The cold winds of winter are rising in Westeros...war is coming...and five kings continue their savage quest for control of the all-powerful Iron Throne. With winter fast approaching, the coveted Iron Throne is occupied by the cruel Joffrey, counseled by his conniving mother Cersei and uncle Tyrion. But the Lannister hold on the Throne is under assault on many fronts. Meanwhile, a new leader is rising among the wildings outside the Great Wall, adding new perils for Jon Snow and the order of the Night''s Watch.',
-10,
-'Finished',
-'https://walter.trakt.us/images/seasons/000/003/964/posters/thumb/718943d94f.jpg',
-true,
-1);
-
-insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
-(2,
-1,
-'Season 1 2001',
-'The miniseries follows Easy Company, an army unit during World War II, from their initial training at Camp Toccoa to the conclusion of the war. The series is based on the book written by the late Stephen E. Ambrose. Band of Brothers is executive produced by Steven Spielberg and Tom Hanks, the series won 6 Emmy Awards.',
- 10,
- 'Finished',
- 'https://walter.trakt.us/images/seasons/000/014/538/posters/thumb/bead1bcce6.jpg',
- true,
-1);
-
-insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
-(3,
-1,
-'Season 1 2007 - 2008',
-'What happens when hyperintelligent roommates Sheldon and Leonard meet Penny, a free-spirited beauty moving in next door, and realize they know next to nothing about life outside of the lab. Rounding out the crew are the smarmy Wolowitz, who thinks he''s as sexy as he is brainy, and Koothrappali, who suffers from an inability to speak in the presence of a woman.',
- 17,
- 'Finished',
- 'https://walter.trakt.us/images/seasons/000/004/080/posters/thumb/585ca19731.jpg',
- true,
-1);
-
-insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
-(3,
-2,
-'Season 2 2008 - 2009',
-'What happens when hyperintelligent roommates Sheldon and Leonard meet Penny, a free-spirited beauty moving in next door, and realize they know next to nothing about life outside of the lab. Rounding out the crew are the smarmy Wolowitz, who thinks he''s as sexy as he is brainy, and Koothrappali, who suffers from an inability to speak in the presence of a woman.',
- 23,
- 'Finished',
- 'https://walter.trakt.us/images/seasons/000/004/081/posters/thumb/e0f1eb86fe.jpg',
- false,
-1);
-
-insert into "season" ("SERIES_ID","NUMBER","TITLE","DESCRIPTION","NUMBER_OF_EPISODES","STATE","IMAGE","REQUESTED","ID_TRAKT") values
-(4,
-1,
-'Season 1 2015',
-'Elliot finds himself at a crossroad when the mysterious leader of an underground hacker group recruits him to destroy the firm he is paid to protect. Compelled by his personal beliefs, Elliot struggles to resist the chance to take down the multinational CEOs he believes are running (and ruining) the world.',
- 10,
- 'Finished',
- 'https://walter.trakt.us/images/seasons/000/107/991/posters/thumb/84b33d1db7.jpg',
- true,
-1);
-
-
-
-insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
-(1,
-1,
-'Winter Is Coming',
-'Ned Stark, Lord of Winterfell learns that his mentor, Jon Arryn, has died and that King Robert is on his way north to offer Ned Arryn’s position as the King’s Hand. Across the Narrow Sea in Pentos, Viserys Targaryen plans to wed his sister Daenerys to the nomadic Dothraki warrior leader, Khal Drogo to forge an alliance to take the throne.',
-3600,
-'Finished',
-'https://walter.trakt.us/images/episodes/000/073/640/screenshots/thumb/dd3fc55725.jpg',
-'English',
-true,
-'<TORRENT>',
-40,
-1);
-
-insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
-(1,
-2,
-'The Kingsroad',
-'Having agreed to become the King’s Hand, Ned leaves Winterfell with daughters Sansa and Arya, while Catelyn stays behind in Winterfell. Jon Snow heads north to join the brotherhood of the Night’s Watch. Tyrion decides to forego the trip south with his family, instead joining Jon in the entourage heading to the Wall. Viserys bides his time in hopes of winning back the throne, while Daenerys focuses her attention on learning how to please her new husband, Drogo.',
-3600,
-'Finished',
-'https://walter.trakt.us/images/episodes/000/073/641/screenshots/thumb/e645d70001.jpg',
-'English',
-true,
-'<TORRENT>',
-50,
-1);
-
-insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
-(2,
-1,
-'The North Remembers',
-'As Robb Stark and his northern army continue the war against the Lannisters, Tyrion arrives in King’s Landing to counsel Joffrey and temper the young king’s excesses. On the island of Dragonstone, Stannis Baratheon plots an invasion to claim his late brother’s throne, allying himself with the fiery Melisandre, a strange priestess of a stranger god. Across the sea, Daenerys, her three young dragons, and the khalasar trek through the Red Waste in search of allies, or water. In the North, Bran presides over a threadbare Winterfell, while beyond the Wall, Jon Snow and the Night’s Watch must shelter with a devious wildling.',
-3600,
-'Finished',
-'https://walter.trakt.us/images/episodes/000/073/650/screenshots/thumb/b2d5b2074f.jpg',
-'English',
-true,
-'<TORRENT>',
-35,
-1);
-
-insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
-(2,
-2,
-'The Night Lands',
-'In the wake of a bloody purge in the capital, Tyrion chastens Cersei for alienating the king’s subjects. On the road north, Arya shares a secret with Gendry, a Night’s Watch recruit. With supplies dwindling, one of Dany’s scouts returns with news of their position. After nine years as a Stark ward, Theon Greyjoy reunites with his father Balon, who wants to restore the ancient Kingdom of the Iron Islands. Davos enlists Salladhor Saan, a pirate, to join forces with Stannis and Melisandre for a naval invasion of King’s Landing.',
-3600,
-'Finished',
-'https://walter.trakt.us/images/episodes/000/073/651/screenshots/thumb/277c2ecc97.jpg',
-'English',
-true,
-'<TORRENT>',
-75,
-1);
-
-insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
-(3,
-1,
-'Currahee',
-'Easy Company is introduced to Captain Sobel, who has the group undergo hard and unfair training. As a result, Sobel comes into conflict with his men, including Richard Winters, his executive officer. The company is shipped to England to prepare for D-Day.',
-3600,
-'Finished',
-'https://walter.trakt.us/images/episodes/000/342/685/screenshots/thumb/02eff220d4.jpg',
-'English',
-true,
-'<TORRENT>',
-100,
-1);
-
-insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
-(3,
-2,
-'Day of Days',
-'Easy Company lands in Normandy, scattered all across and away from their drop zone. 1st Lt. Meehan, commander of Easy, is killed when his plane suffers a direct hit and 1st Lt. Winters must take command and 1st Lt. Speirs is introduced.',
-3600,
-'Finished',
-'https://walter.trakt.us/images/episodes/000/342/686/screenshots/thumb/e25f274bf2.jpg',
-'English',
-true,
-'<TORRENT>',
-30,
-1);
-
-insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
-(4,
-1,
-'Pilot',
-'Brilliant physicist roommates Leonard and Sheldon meet their new neighbor Penny, who begins showing them that as much as they know about science, they know little about actual living.',
-1320,
-'Finished',
-'https://walter.trakt.us/images/episodes/000/075/369/screenshots/thumb/9dc6d4ca6a.jpg',
-'English',
-true,
-'<TORRENT>',
-100,
-1);
+-- insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
+-- (1,
+-- 1,
+-- 'Winter Is Coming',
+-- 'Ned Stark, Lord of Winterfell learns that his mentor, Jon Arryn, has died and that King Robert is on his way north to offer Ned Arryn’s position as the King’s Hand. Across the Narrow Sea in Pentos, Viserys Targaryen plans to wed his sister Daenerys to the nomadic Dothraki warrior leader, Khal Drogo to forge an alliance to take the throne.',
+-- 3600,
+-- 'Finished',
+-- 'https://walter.trakt.us/images/episodes/000/073/640/screenshots/thumb/dd3fc55725.jpg',
+-- 'English',
+-- true,
+-- '<TORRENT>',
+-- 40,
+-- 1);
+--
+-- insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
+-- (1,
+-- 2,
+-- 'The Kingsroad',
+-- 'Having agreed to become the King’s Hand, Ned leaves Winterfell with daughters Sansa and Arya, while Catelyn stays behind in Winterfell. Jon Snow heads north to join the brotherhood of the Night’s Watch. Tyrion decides to forego the trip south with his family, instead joining Jon in the entourage heading to the Wall. Viserys bides his time in hopes of winning back the throne, while Daenerys focuses her attention on learning how to please her new husband, Drogo.',
+-- 3600,
+-- 'Finished',
+-- 'https://walter.trakt.us/images/episodes/000/073/641/screenshots/thumb/e645d70001.jpg',
+-- 'English',
+-- true,
+-- '<TORRENT>',
+-- 50,
+-- 1);
+--
+-- insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
+-- (2,
+-- 1,
+-- 'The North Remembers',
+-- 'As Robb Stark and his northern army continue the war against the Lannisters, Tyrion arrives in King’s Landing to counsel Joffrey and temper the young king’s excesses. On the island of Dragonstone, Stannis Baratheon plots an invasion to claim his late brother’s throne, allying himself with the fiery Melisandre, a strange priestess of a stranger god. Across the sea, Daenerys, her three young dragons, and the khalasar trek through the Red Waste in search of allies, or water. In the North, Bran presides over a threadbare Winterfell, while beyond the Wall, Jon Snow and the Night’s Watch must shelter with a devious wildling.',
+-- 3600,
+-- 'Finished',
+-- 'https://walter.trakt.us/images/episodes/000/073/650/screenshots/thumb/b2d5b2074f.jpg',
+-- 'English',
+-- true,
+-- '<TORRENT>',
+-- 35,
+-- 1);
+--
+-- insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
+-- (2,
+-- 2,
+-- 'The Night Lands',
+-- 'In the wake of a bloody purge in the capital, Tyrion chastens Cersei for alienating the king’s subjects. On the road north, Arya shares a secret with Gendry, a Night’s Watch recruit. With supplies dwindling, one of Dany’s scouts returns with news of their position. After nine years as a Stark ward, Theon Greyjoy reunites with his father Balon, who wants to restore the ancient Kingdom of the Iron Islands. Davos enlists Salladhor Saan, a pirate, to join forces with Stannis and Melisandre for a naval invasion of King’s Landing.',
+-- 3600,
+-- 'Finished',
+-- 'https://walter.trakt.us/images/episodes/000/073/651/screenshots/thumb/277c2ecc97.jpg',
+-- 'English',
+-- true,
+-- '<TORRENT>',
+-- 75,
+-- 1);
+--
+-- insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
+-- (3,
+-- 1,
+-- 'Currahee',
+-- 'Easy Company is introduced to Captain Sobel, who has the group undergo hard and unfair training. As a result, Sobel comes into conflict with his men, including Richard Winters, his executive officer. The company is shipped to England to prepare for D-Day.',
+-- 3600,
+-- 'Finished',
+-- 'https://walter.trakt.us/images/episodes/000/342/685/screenshots/thumb/02eff220d4.jpg',
+-- 'English',
+-- true,
+-- '<TORRENT>',
+-- 100,
+-- 1);
+--
+-- insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
+-- (3,
+-- 2,
+-- 'Day of Days',
+-- 'Easy Company lands in Normandy, scattered all across and away from their drop zone. 1st Lt. Meehan, commander of Easy, is killed when his plane suffers a direct hit and 1st Lt. Winters must take command and 1st Lt. Speirs is introduced.',
+-- 3600,
+-- 'Finished',
+-- 'https://walter.trakt.us/images/episodes/000/342/686/screenshots/thumb/e25f274bf2.jpg',
+-- 'English',
+-- true,
+-- '<TORRENT>',
+-- 30,
+-- 1);
+--
+-- insert into "episode" ("SEASON_ID", "NUMBER", "TITLE", "DESCRIPTION", "DURATION", "STATE", "IMAGE", "LANGUAGE", "REQUESTED", "SOURCE", "PROGRESS","ID_TRAKT") values
+-- (4,
+-- 1,
+-- 'Pilot',
+-- 'Brilliant physicist roommates Leonard and Sheldon meet their new neighbor Penny, who begins showing them that as much as they know about science, they know little about actual living.',
+-- 1320,
+-- 'Finished',
+-- 'https://walter.trakt.us/images/episodes/000/075/369/screenshots/thumb/9dc6d4ca6a.jpg',
+-- 'English',
+-- true,
+-- '<TORRENT>',
+-- 100,
+-- 1);

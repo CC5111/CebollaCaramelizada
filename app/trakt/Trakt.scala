@@ -79,7 +79,7 @@ object Trakt {
   Get a single season for a show
    */
   def get_season(show_id: Long, season: Int) = {
-    val request = Http(API_URL + "shows/" + show_id + "/seasons/" + season)
+    val request = Http(API_URL + "shows/" + show_id + "/seasons/" + season + "?extended=images")
       .header("Content-Type", "application/json")
       .header("trakt-api-version", "2")
       .header("trakt-api-key", CLIENT_ID).asString
@@ -105,7 +105,7 @@ object Trakt {
   Get a single episode from a show
    */
   def get_episode(show_id: Long, season: Int, episode: Int) = {
-    val request = Http(API_URL + "shows/" + show_id + "/seasons/" + season + "/episodes/" + episode)
+    val request = Http(API_URL + "shows/" + show_id + "/seasons/" + season + "/episodes/" + episode + "?extended=images")
       .header("Content-Type", "application/json")
       .header("trakt-api-version", "2")
       .header("trakt-api-key", CLIENT_ID).asString
