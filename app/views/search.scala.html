@@ -1,0 +1,23 @@
+@import trakt.SearchedSeries
+@(series: Seq[SearchedSeries], serieName: String)
+
+@main("Searching " + serieName + "· Cebolla Caramelizada") {
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-tit">Add Shows</h3>
+        </div>
+    </div>
+    @for(s <- series) {
+        <div class="media">
+            <div class="media-left">
+                <img class="media-object" height="70px;" src="@s.image" alt="twd">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">@s.title <small>@s.status</small></h4>
+                @s.description
+            </div>
+        </div>
+    }
+
+}

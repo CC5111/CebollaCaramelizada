@@ -20,7 +20,6 @@ class SeasonController @Inject()(seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, epi
         }
         case None => Redirect(routes.HomeController.index())
       }
-
     }
   }
 }
