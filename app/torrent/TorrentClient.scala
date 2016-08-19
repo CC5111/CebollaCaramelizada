@@ -17,12 +17,11 @@ object TorrentClient {
   Add torrent from an existent torrent file with name <hash>.torrent in folder torrents, and starts the download
   to downloadPath
    */
-  def add_torrent(torrentHash: String, downloadPath: String) = {
-    val torrent = TorrentInfo(torrentHash, downloadPath)
+  def add_torrent(torrentFile : File, downloadPath: String) = {
+    val torrent = TorrentInfo(torrentFile, downloadPath)
     val dPath = new File(downloadPath)
     dPath.mkdir()
-    val tFile = new File(downloadPath+"/" + torrent.torrentHash + ".torrent")
-    val metaFile = new Metafile(new BufferedInputStream(new FileInputStream(tFile)))
+    val metaFile = new Metafile(new BufferedInputStream(new FileInputStream(torrentFile)))
     val tdisk = new PlainFileSystemTorrentDisk(metaFile, dPath)
     tdisk.init()
     val t = new Torrent(metaFile, tdisk, peerListener)

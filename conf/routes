@@ -13,5 +13,9 @@ GET     /update-series      controllers.ActorController.updateSeries()
 
 GET     /series/list/             controllers.ListController.show()
 
+GET     /downloads/socket           controllers.DownloadsController.socket
+
+GET     /downloads                  controllers.DownloadsController.show
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
