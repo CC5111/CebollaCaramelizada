@@ -9,3 +9,5 @@ case class Episode(id: Long, seasonID: Long, number:Int, title:String, descripti
 case class Subtitle(id: Long, episodeID: Long, language:String, source:String)  extends BaseEntity
 
 
+/* Useful entities */
+case class SearchedSeries(title: String, description: String, image: String, status: String, traktId: Long)

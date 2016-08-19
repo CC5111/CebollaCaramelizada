@@ -18,70 +18,81 @@ import slick.model.Column
 import scala.concurrent.Await
 
 
-trait AbstractBaseDAO[T,A] {
-  def insert(row : A): Future[Long]
-  def insert(rows : Seq[A]): Future[Seq[Long]]
-  def update(row : A): Future[Int]
-  def update(rows : Seq[A]): Future[Unit]
-  def findById(id : Long): Future[Option[A]]
-  def findByFilter[C : CanBeQueryCondition](f: (T) => C): Future[Seq[A]]
-  def deleteById(id : Long): Future[Int]
-  def deleteById(ids : Seq[Long]): Future[Int]
-  def deleteByFilter[C : CanBeQueryCondition](f:  (T) => C): Future[Int]
+trait AbstractBaseDAO[T, A] {
+  def insert(row: A): Future[Long]
+
+  def insert(rows: Seq[A]): Future[Seq[Long]]
+
+  def update(row: A): Future[Int]
+
+  def update(rows: Seq[A]): Future[Unit]
+
+  def findById(id: Long): Future[Option[A]]
+
+  def findByFilter[C: CanBeQueryCondition](f: (T) => C): Future[Seq[A]]
+
+  def deleteById(id: Long): Future[Int]
+
+  def deleteById(ids: Seq[Long]): Future[Int]
+
+  def deleteByFilter[C: CanBeQueryCondition](f: (T) => C): Future[Int]
 }
 
 
-abstract class BaseDAO[T <: BaseTable[A], A <: BaseEntity]() extends AbstractBaseDAO[T,A] with HasDatabaseConfig[JdbcProfile] {
+abstract class BaseDAO[T <: BaseTable[A], A <: BaseEntity]() extends AbstractBaseDAO[T, A] with HasDatabaseConfig[JdbcProfile] {
   protected lazy val dbConfig: DatabaseConfig[JdbcProfile] = DatabaseConfigProvider.get[JdbcProfile](Play.current)
+
   import dbConfig.driver.api._
 
   protected val tableQ: TableQuery[T]
 
-  def insert(row : A): Future[Long] ={
+  def insert(row: A): Future[Long] = {
     insert(Seq(row)).map(_.head)
   }
 
-  def insert(rows : Seq[A]): Future[Seq[Long]] ={
+  def insert(rows: Seq[A]): Future[Seq[Long]] = {
     db.run(tableQ returning tableQ.map(_.id) ++= rows.filter(_.isValid))
   }
 
-  def update(row : A): Future[Int] = {
+  def update(row: A): Future[Int] = {
     if (row.isValid)
       db.run(tableQ.filter(_.id === row.id).update(row))
     else
-      Future{0}
+      Future {
+        0
+      }
   }
 
-  def update(rows : Seq[A]): Future[Unit] = {
+  def update(rows: Seq[A]): Future[Unit] = {
     db.run(DBIO.seq((rows.filter(_.isValid).map(r => tableQ.filter(_.id === r.id).update(r))): _*))
   }
 
-  def findById(id : Long): Future[Option[A]] = {
+  def findById(id: Long): Future[Option[A]] = {
     db.run(tableQ.filter(_.id === id).result.headOption)
   }
 
-  def findByFilter[C : CanBeQueryCondition](f: (T) => C): Future[Seq[A]] = {
+  def findByFilter[C: CanBeQueryCondition](f: (T) => C): Future[Seq[A]] = {
     db.run(tableQ.withFilter(f).result)
   }
 
-  def deleteById(id : Long): Future[Int] = {
+  def deleteById(id: Long): Future[Int] = {
     deleteById(Seq(id))
   }
 
-  def deleteById(ids : Seq[Long]): Future[Int] = {
+  def deleteById(ids: Seq[Long]): Future[Int] = {
     db.run(tableQ.filter(_.id.inSet(ids)).delete)
   }
 
-  def deleteByFilter[C : CanBeQueryCondition](f:  (T) => C): Future[Int] = {
+  def deleteByFilter[C: CanBeQueryCondition](f: (T) => C): Future[Int] = {
     db.run(tableQ.withFilter(f).delete)
   }
 
 }
 
 
-
 @Singleton
-class SeriesDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends BaseDAO[SeriesTable, Series]{
+class SeriesDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends BaseDAO[SeriesTable, Series] {
+
   import dbConfig.driver.api._
 
   protected val tableQ = SlickTables.seriesTable
@@ -89,11 +100,17 @@ class SeriesDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider
   def all: Future[Seq[Series]] = {
     db.run(tableQ.result)
   }
+
+  def findByTrackId(idTrakt: Long) = {
+    db.run(tableQ.filter(_.idTrakt === idTrakt).result.headOption)
+  }
+
 }
 
 
 @Singleton
-class SeasonDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends BaseDAO[SeasonTable, Season]{
+class SeasonDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends BaseDAO[SeasonTable, Season] {
+
   import dbConfig.driver.api._
 
   protected val tableQ = SlickTables.seasonTable
@@ -102,15 +119,20 @@ class SeasonDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider
     db.run(tableQ.result)
   }
 
+  def findByTrackId(idTrakt: Long) = {
+    db.run(tableQ.filter(_.idTrakt === idTrakt).result.headOption)
+  }
 
-  def seasonsOfId(id: Long) : Future[Seq[Season]]  = {
+
+  def seasonsOfId(id: Long): Future[Seq[Season]] = {
     db.run(tableQ.filter(_.seriesID === id).sortBy(_.number).result)
   }
 }
 
 
 @Singleton
-class EpisodeDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends BaseDAO[EpisodeTable, Episode]{
+class EpisodeDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends BaseDAO[EpisodeTable, Episode] {
+
   import dbConfig.driver.api._
 
   protected val tableQ = SlickTables.episodeTable
@@ -120,7 +142,11 @@ class EpisodeDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvide
   }
 
 
-  def episodesOfId(id: Long) : Future[Seq[Episode]]  = {
+  def episodesOfId(id: Long): Future[Seq[Episode]] = {
     db.run(tableQ.filter(_.seasonID === id).sortBy(_.number).result)
+  }
+
+  def findByTrackId(idTrakt: Long) = {
+    db.run(tableQ.filter(_.idTrakt === idTrakt).result.headOption)
   }
 }

@@ -1,13 +1,12 @@
 package trakt
 
 import scalaj.http.{Http, HttpResponse}
-import models.entities.Series
+import models.entities.{Series,SearchedSeries}
 import java.net.URLEncoder
 
 import controllers.routes
 import play.api.libs.json._
 
-case class SearchedSeries(title: String, description: String, image: String, status: String, traktId: Long)
 
 /**
   * Created by matiasimc on 03-08-16.
