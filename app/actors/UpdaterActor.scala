@@ -16,22 +16,22 @@ import scala.concurrent.{Await, ExecutionContext}
 
 case object Update
 
+
 object UpdaterActor {
   def props(seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, episodeDAO: EpisodeDAO)(implicit system: ActorSystem, ec: ExecutionContext) =
     Props(new UpdaterActor(seriesDAO, seasonDAO, episodeDAO)(system, ec))
 }
 
-
-class UpdaterActor @Inject() (seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, episodeDAO: EpisodeDAO)
-                             (implicit system: ActorSystem, ec: ExecutionContext)extends Actor{
+class UpdaterActor @Inject()(seriesDAO: SeriesDAO, seasonDAO: SeasonDAO, episodeDAO: EpisodeDAO)
+                            (implicit system: ActorSystem, ec: ExecutionContext) extends Actor {
   def receive: Receive = {
     case Update => {
       // CALL TRAKT HERE (new series?)
       println("Updater Actor")
       val series: Seq[Series] = Await.result(seriesDAO.all, Duration.Inf)
-      val seriesActor =  Await.result(seriesDAO.all, Duration.Inf).map(
+      val seriesActor = Await.result(seriesDAO.all, Duration.Inf).map(
         serie => {
-          system.actorOf(UpdateSerieActor.props(serie, seriesDAO, seasonDAO, episodeDAO), "Updater-serie-"+serie.id)
+          system.actorOf(UpdateSerieActor.props(serie, seriesDAO, seasonDAO, episodeDAO), "Updater-serie-" + serie.id)
         }
       )
       for (actor <- seriesActor) actor ! Update //async call

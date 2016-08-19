@@ -101,8 +101,12 @@ class SeriesDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider
     db.run(tableQ.result)
   }
 
-  def findByTrackId(idTrakt: Long) = {
+  def findByIdTrakt(idTrakt: Long) : Future[Option[Series]] = {
     db.run(tableQ.filter(_.idTrakt === idTrakt).result.headOption)
+  }
+
+  def deleteByIdTrakt(id: Seq[Long]): Future[Int] = {
+    db.run(tableQ.filter(_.idTrakt.inSet(id)).delete)
   }
 
 }

@@ -20,9 +20,9 @@
                     @if(s.requested){
                         <h4 class="label label-success pull-right"><span class="glyphicon glyphicon-ok"></span></h4>
                     } else {
-                        <h4 class="pull-right"><span class="glyphicon glyphicon-unchecked"></span></h4>
+                        <h4 class="label label-default pull-right"><span class="glyphicon glyphicon-unchecked"></span></h4>
                     }
-
+                    <a href="@routes.HomeController.remove(s.idTrakt)"><h4 class="label label-danger pull-right"><span class="glyphicon glyphicon-remove"></span></h4></a>
                     <img src="@s.image" alt="got" class="img-responsive panel-img">
                     <span class="label label-default">Temporadas: @s.seasonsNumber</span>
                     <span class="label label-default">@s.state</span>

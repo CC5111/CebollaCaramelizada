@@ -35,4 +35,10 @@ class HomeController @Inject() (seriesDAO: SeriesDAO)(implicit ec: ExecutionCont
   }
   }
 
+  def remove(id: Long) = Action.async { implicit request =>
+    seriesDAO.deleteByIdTrakt(Seq{id}).map {element =>
+      Redirect(routes.HomeController.index)
+    }
+  }
+
 }
