@@ -3,6 +3,7 @@ package subtitles
 import java.io.{File, FileOutputStream, InputStream, OutputStream}
 import java.net.{URL, URLEncoder}
 
+import conf.CONF
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 
 /**
@@ -30,9 +31,7 @@ object SubdivxScraper {
     }
     val in = connection.getInputStream
     try {
-      val folder = new File("torrents/")
-      folder.mkdir()
-      val outFile = new File("torrents/"+id+extension)
+      val outFile = new File(CONF.build_path(showName, season)+File.separator+id+extension)
       val out = new FileOutputStream(outFile)
       try {
         copy(in, out)
