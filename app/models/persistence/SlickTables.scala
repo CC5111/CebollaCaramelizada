@@ -31,8 +31,9 @@ object SlickTables extends HasDatabaseConfig[JdbcProfile] {
     def image = column[String]("IMAGE")
     // Indica si la serie fue solicitada
     def requested = column[Boolean]("REQUESTED")
-
-    def * = (id, title, description, seasonsNumber, state, image, requested) <> (Series.tupled, Series.unapply)
+    // Id en Trakt de la serie
+    def idTrakt = column[Long]("ID_TRAKT")
+    def * = (id, title, description, seasonsNumber, state, image, requested, idTrakt) <> (Series.tupled, Series.unapply)
   }
   val seriesTable : TableQuery[SeriesTable] = TableQuery[SeriesTable]
 
@@ -55,8 +56,10 @@ object SlickTables extends HasDatabaseConfig[JdbcProfile] {
     def image = column[String]("IMAGE")
     // Indica si l season fue solicitada
     def requested = column[Boolean]("REQUESTED")
+    // Id en Trakt de la season
+    def idTrakt = column[Long]("ID_TRAKT")
 
-    def * = (id, seriesID, number, title, description, epsNumber, state, image, requested) <> (Season.tupled, Season.unapply)
+    def * = (id, seriesID, number, title, description, epsNumber, state, image, requested, idTrakt) <> (Season.tupled, Season.unapply)
 
     // Foreign Key
     def series: ForeignKeyQuery[SeriesTable, Series] =
@@ -89,9 +92,11 @@ object SlickTables extends HasDatabaseConfig[JdbcProfile] {
     def source = column[String]("SOURCE")
     // Indica el porcentaje de descarga del capitulo
     def progress = column[Double]("PROGRESS")
+    // Id en Trakt de la serie
+    def idTrakt = column[Long]("ID_TRAKT")
 
 
-    def * = (id, seasonID, number, title, description, duration, state, image, language, requested, source, progress) <> (Episode.tupled, Episode.unapply)
+    def * = (id, seasonID, number, title, description, duration, state, image, language, requested, source, progress, idTrakt) <> (Episode.tupled, Episode.unapply)
 
     // Foreign Key
     def season: ForeignKeyQuery[SeasonTable, Season] =
