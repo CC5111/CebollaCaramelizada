@@ -10,13 +10,14 @@ import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 object KickassAPI {
   val browser = JsoupBrowser()
   val kat_url = "http://kat.al/search.php?q="
-  def download_torrent_file(showName : String, season: Int, episode: Int) = {
+  def download_torrent_file(showName : String, season: Int, episode: Int) : File = {
     val seasonString = ("S"+(season/10)).concat(""+(season % 10))
     val episodeString = ("E"+(episode/10)).concat(""+(episode % 10))
+    val download_file = new File("torrents/"+showName.replaceAll(" ", ".")+"."+seasonString+episodeString+".torrent")
+    if (download_file.exists()) return download_file
     val results = browser.get(kat_url+URLEncoder.encode(showName, "UTF-8")+"%20"+seasonString+episodeString)
     var download_url = results.body.select("i.ka.ka16.ka-arrow-down").head.parent.get.attrs("href")
     download_url = download_url.substring(0,download_url.indexOf("?title="))
-    val download_file = new File("torrents/"+showName.replaceAll(" ", ".")+"."+seasonString+episodeString+".torrent")
     val connection = new URL(download_url).openConnection
     connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11")
     val in = connection.getInputStream
