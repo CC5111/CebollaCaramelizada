@@ -21,7 +21,7 @@ object TorrentClient {
     val torrent = TorrentInfo(torrentHash, downloadPath)
     val dPath = new File(downloadPath)
     dPath.mkdir()
-    val tFile = new File("torrents/" + torrent.torrentHash + ".torrent")
+    val tFile = new File(downloadPath+"/" + torrent.torrentHash + ".torrent")
     val metaFile = new Metafile(new BufferedInputStream(new FileInputStream(tFile)))
     val tdisk = new PlainFileSystemTorrentDisk(metaFile, dPath)
     tdisk.init()
